@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.9/css/uikit.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Damion" rel="stylesheet">
+  <style>
+  body,
+  html{
+    height: 100%;
+    width: 100%;
+  }
+
+  html{
+    background: url("http://www.youreternalblessings.com/wp-content/uploads/2015/09/cook_bakground.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+  #container{
+    height: 100%;
+    widows: 100%;
+  }
+
+    .restaurant {
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0,0,0,0.6);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.4.0/velocity.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.4.0/velocity.ui.min.js"></script>
+  <script>
+   $(document).ready(function() {
+
+    $('.restaurant').velocity('transition.fadeIn', {
+        stagger: 200,
+        drag: true
+    });
+  });
+ </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.9/js/uikit.min.js" type="text/javascript" charset="utf-8" async defer></script>
+</head>
+<body>
+<div id="container">
+  <% test.forEach((business)=> { %>
+  <div class="restaurant">
+  <h3><%= business.name %></h3>
+  <img src="<%= business.rating_img_url %>" alt="">
+  <p><a href="https://www.google.com/maps/@<%= business.location.coordinate.latitude %>,<%= business.location.coordinate.longitude %>,15z"><%= business.location.display_address %></a></p>
+  <p><%= business.snippet_text %><a href="<%= business.url %>">more</a></p>
+  </div>
+ <% }) %>
+ </div>
+</body>
+</html>
+
+
