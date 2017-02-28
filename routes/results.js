@@ -34,7 +34,7 @@ router.post('/', function(req, res, next) {
             axios.post(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&key=${Ogeocode_key}`)
                 .then((response1) => {
                     let area = response1.data.results[0].formatted_address
-                    Yelp.search({ term:`${req.body.name}`, location: area, radius_filter: 1609.34, sort: 1 })
+                    Yelp.search({ term: `${req.body.name}`, location: area, radius_filter: 1609.34, sort: 1 })
                         .then(function(data) {
                             let businesses = data.businesses;
                             let latty;
